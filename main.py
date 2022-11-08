@@ -32,29 +32,24 @@ class Game(arcade.Window):
     def on_key_press(self, key, modifiers):
         if key == arcade.key.UP:
             self.player_sprite.change_y = PLAYER_MOVEMENT_SPEED
+            self.player_sprite.change_x = 0
             self.player_sprite.angle = 180
         elif key == arcade.key.DOWN:
             self.player_sprite.change_y = -PLAYER_MOVEMENT_SPEED
+            self.player_sprite.change_x = 0
             self.player_sprite.angle = 360
         elif key == arcade.key.LEFT:
             self.player_sprite.change_x = -PLAYER_MOVEMENT_SPEED
+            self.player_sprite.change_y = 0
             self.player_sprite.angle = -90
         elif key == arcade.key.RIGHT:
             self.player_sprite.change_x = PLAYER_MOVEMENT_SPEED
+            self.player_sprite.change_y = 0
             self.player_sprite.angle = 90
-
-    def on_key_release(self, key, modifiers):
-        if key == arcade.key.UP:
-            self.player_sprite.change_y = 0
-        elif key == arcade.key.DOWN:
-            self.player_sprite.change_y = 0
-        elif key == arcade.key.LEFT:
-            self.player_sprite.change_x = 0
-        elif key == arcade.key.RIGHT:
-            self.player_sprite.change_x = 0
     
     def on_update(self, delta_time):
         self.player_sprite.update()
+        
         if self.player_sprite.center_x < self.player_sprite.height:
             self.player_sprite.center_x = self.player_sprite.height
 
