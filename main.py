@@ -5,13 +5,13 @@ SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 650
 SCREEN_TITLE = "Snake Game"
 PLAYER_MOVEMENT_SPEED = 5
+SCALING = 0.2
 
 
 class Game(arcade.Window):
     def __init__(self):
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
         arcade.set_background_color(arcade.csscolor.BEIGE)
-        self.scaling = 0.2
         self.player_list = None
         self.collectables = None
         self.player_sprite = None
@@ -20,7 +20,7 @@ class Game(arcade.Window):
         self.player_list = arcade.SpriteList()
         self.collectables = arcade.SpriteList()
         main_sprite = "snake (2).png"
-        self.player_sprite = arcade.Sprite(main_sprite, self.scaling)
+        self.player_sprite = arcade.Sprite(main_sprite, SCALING)
         self.player_sprite.center_x = 500
         self.player_sprite.center_y = 325
         self.player_list.append(self.player_sprite)
@@ -50,17 +50,17 @@ class Game(arcade.Window):
     def on_update(self, delta_time):
         self.player_sprite.update()
         
-        if self.player_sprite.center_x < self.player_sprite.height:
-            self.player_sprite.center_x = self.player_sprite.height
+        if self.player_sprite.center_x < self.player_sprite.height / 2:
+            self.player_sprite.center_x = self.player_sprite.height / 2
 
-        if self.player_sprite.center_x > SCREEN_WIDTH - self.player_sprite.height:
-            self.player_sprite.center_x = SCREEN_WIDTH - self.player_sprite.height
+        if self.player_sprite.center_x > SCREEN_WIDTH - self.player_sprite.height / 2:
+            self.player_sprite.center_x = SCREEN_WIDTH - self.player_sprite.height / 2
 
-        if self.player_sprite.center_y < self.player_sprite.height:
-            self.player_sprite.center_y = self.player_sprite.height
+        if self.player_sprite.center_y < self.player_sprite.height/2:
+            self.player_sprite.center_y = self.player_sprite.height/2
 
-        if self.player_sprite.center_y > SCREEN_HEIGHT - self.player_sprite.height:
-            self.player_sprite.center_y = SCREEN_HEIGHT - self.player_sprite.height
+        if self.player_sprite.center_y > SCREEN_HEIGHT - self.player_sprite.height/2:
+            self.player_sprite.center_y = SCREEN_HEIGHT - self.player_sprite.height/2
 
 def main():
     window = Game()
