@@ -4,6 +4,7 @@
 ## Updates
 - Update 0.1: Added basic movement and collision with the snake
 - Update 0.15: Added better movement which emulates the traditional snake game movement
+- Update 0.2: Added the collectable sprite and added a score system. 
 
 
 
